@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:RandomFactApp.Models"
+             xmlns:viewModel="clr-namespace:RandomFactApp.ViewModels"
+             x:Class="RandomFactApp.View.MainPage"
+             x:DataType="viewModel:RandomFactViewModel">
+    <StackLayout>
+        <Label x:DataType="model:RandomFact"
+            Text="{Binding activity}"/>
+        <Label x:DataType="model:RandomFact"
+            Text="{Binding type}"/>
+
+        <Button Text="Get A fact"
+                Command="{Binding GetRandomFactCommand}"
+                IsEnabled="{Binding IsNotBusy}"/>
+        <ActivityIndicator
+            IsVisible="{Binding IsBusy}"
+            IsRunning="{Binding IsBusy}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center"/>
+    </StackLayout>
+</ContentPage>
